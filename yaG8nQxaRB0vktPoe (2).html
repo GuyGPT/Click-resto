@@ -1,0 +1,696 @@
+<!DOCTYPE html><html><head><base href="https://dabali-restaurant.ci/"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dabali Restaurant - Menu et Panier</title><style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f8ff;
+        color: #333;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: #ff8c00;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+    }
+    h1 {
+        margin: 0;
+    }
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .menu-item {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .menu-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .menu-item-info {
+        padding: 15px;
+    }
+    .menu-item-name {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .menu-item-price {
+        color: #ff8c00;
+    }
+    .add-to-cart {
+        background-color: #4169e1;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .add-to-cart:hover {
+        background-color: #3a5fcd;
+    }
+    .cart {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .remove-item {
+        background-color: #ff4500;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .action-button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin-top: 20px;
+        background-color: #4169e1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .action-button:hover {
+        background-color: #3a5fcd;
+    }
+    #mobile-payment {
+        background-color: #32cd32;
+    }
+    #mobile-payment:hover {
+        background-color: #2eb82e;
+    }
+    #feedback {
+        background-color: #ff8c00;
+    }
+    #feedback:hover {
+        background-color: #ff7f00;
+    }
+    .dine-in-options {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 15px;
+        margin-top: 10px;
+    }
+    .dine-in-options select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+</style></head><body><div class="container">
+
+<div>
+<header style="background-color: green; color: white; text-align: center; padding: 5px 0; border: 1px solid gold; box-shadow: 0 0 3px rgba(255, 215, 0, 0.2); border-radius: 10px; position: relative; overflow: hidden;">
+  <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+  <div style="width: 100px; height: 100px; border: 2px solid gold; border-radius: 10px; overflow: hidden; background-color: white; display: flex; justify-content: center; align-items: center; margin-top: 2mm;">
+  <img src="https://disco.discowd.com/r/s9yd.jpg.jpg" alt="Logo du Restaurant LAAFI" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+</div>
+</div>
+  <div>
+  <h1 style="font-size: 1.5em; display: flex; align-items: center; justify-content: center; color: yellow; padding: 5px; width: 100%; box-sizing: border-box; background-color: transparent; margin-bottom: 0;">
+    <strong style="text-shadow: -1px -1px 0 gold, 1px -1px 0 gold, -1px 1px 0 gold, 1px 1px 0 gold; color: yellow; display: flex; flex-direction: column; align-items: center;">
+  RESTAURANT LOUANGE
+  <span style="font-size: 0.7em; font-style: italic; margin-top: 5px; color: white; text-shadow: -1px -1px 0 darkgreen, 1px -1px 0 darkgreen, -1px 1px 0 darkgreen, 1px 1px 0 darkgreen;">Le goût des délices exquis</span>
+</strong>
+  </h1>
+  <div style="overflow: hidden; white-space: nowrap; margin-top: 10px;">
+    <marquee behavior="scroll" direction="left" scrollamount="5" style="color: #FFD700; font-weight: bold; font-size: 1.2em; text-shadow: 1px 1px 2px #000000;">
+      ✨ SOYEZ LES BIENVENUS🍽️🍇🥂🍧🍹🍨🍽️SOYEZ LES BIENVENUS 🍓🍍🥬🍅🍗🥘
+    </marquee>
+  </div>
+</div>
+  <div class="glitter-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+    <style>
+      @keyframes fall {
+        0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+      }
+      .glitter {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: gold;
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        animation: fall 5s linear infinite;
+      }
+    </style>
+    <script>
+      function createGlitter() {
+        const glitterContainer = document.querySelector('.glitter-container');
+        const glitter = document.createElement('div');
+        glitter.classList.add('glitter');
+        glitter.style.left = Math.random() * 100 + '%';
+        glitter.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        glitterContainer.appendChild(glitter);
+        setTimeout(() => {
+          glitter.remove();
+        }, 5000);
+      }
+      setInterval(createGlitter, 200);
+    </script>
+  </div>
+</header>
+</div>
+
+<div>
+    <!-- Le contenu de l'élément avec w-tid="16" a été supprimé -->
+</div>
+
+<div>
+<button style="display: block; width: 100%; padding: 15px; margin-bottom: 20px; background-color: #FFD700; color: black; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-top: 0.5mm; position: relative; overflow: hidden;">
+  CLIQUEZ ICI POUR VOIR NOS PROMOS<br>DU JOUR
+  <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transform: rotate(45deg); animation: wave 2s infinite linear;">
+    <style>
+      @keyframes wave {
+        0% { transform: translate(-100%, -100%) rotate(45deg); }
+        100% { transform: translate(100%, 100%) rotate(45deg); }
+      }
+    </style>
+  </div>
+</button>
+
+<div class="cart" style="border: 4px double black; border-radius: 8px; background-color: #f0f8ff; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <h2 style="color: black; margin-bottom: 15px; text-align: center; font-weight: 900; font-size: 1.5em; text-decoration: underline double;">Menu et Panier</h2>
+  
+  <div class="menu" style="margin-bottom: 20px;">
+  <h3 style="color: red; margin-top: 20px; margin-bottom: 14px; text-decoration: underline; text-align: center; margin-left: -6mm;">
+  <span style="display: block; font-size: 0.7em; color: #333; margin-bottom: 12mm; text-decoration-color: yellow; margin-left: auto; margin-right: auto; text-align: center; font-style: italic; margin-top: -5mm; max-width: 80%; position: relative; background-color: yellow; padding: 10px; border-radius: 5px; text-decoration: underline; left: -1mm; text-decoration: underline yellow;">
+Cliquez sur les noms des plats pour ouvrir leurs fiches de compositions. Cliquez sur les prix et quantités des plats pour ajouter à votre panier. Vérifiez votre panier avant de valider votre commande. Nos serveurs recevront immédiatement votre commande✨
+<svg width="100%" height="100%" style="position: absolute; top: 0; left: 0; z-index: -1;">
+    <rect width="100%" height="100%" rx="5" ry="5" fill="yellow" stroke="black" stroke-width="2"></rect>
+</svg>
+</span>
+  BOISSONS
+</h3>
+  <ul style="list-style-type: none; padding: 0; margin-top: 0;">
+    <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <button style="background-color: #FFD700; color: #000; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; transform: perspective(1px) translateZ(0); margin-left: -3mm;" onclick="openInfoModal('Eau minérale')">Eau minérale</button>
+      <button style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 3mm; display: flex; align-items: center;">
+  <select onchange="updateQuantity(this, 'Eau minérale', 500)" style="margin-right: 5px; padding: 2px;">
+    <option value="0" selected="">0 x</option>
+    <option value="1">1 x</option>
+    <option value="2">2 x</option>
+    <option value="3">3 x</option>
+    <option value="4">4 x</option>
+    <option value="5">5 x</option>
+    <option value="6">6 x</option>
+    <option value="7">7 x</option>
+    <option value="8">8 x</option>
+    <option value="9">9 x</option>
+    <option value="10">10 x</option>
+    <option value="15">15 x</option>
+    <option value="20">20 x</option>
+    <option value="25">25 x</option>
+    <option value="30">30 x</option>
+    <option value="35">35 x</option>
+    <option value="40">40 x</option>
+    <option value="45">45 x</option>
+    <option value="50">50 x</option>
+  </select>
+  500 FCFA
+</button></li>
+    <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <button style="background-color: #FFD700; color: #000; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; transform: perspective(1px) translateZ(0); margin-left: -3mm;">Jus de fruits</button>
+      <button style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 3mm; display: flex; align-items: center;">
+  <select onchange="updateQuantity(this, 'Jus de fruits', 1000)" style="margin-right: 5px; padding: 2px;">
+    <option value="0" selected="">0 x</option>
+    <option value="1">1 x</option>
+    <option value="2">2 x</option>
+    <option value="3">3 x</option>
+    <option value="4">4 x</option>
+    <option value="5">5 x</option>
+    <option value="10">10 x</option>
+    <option value="15">15 x</option>
+    <option value="20">20 x</option>
+  </select>
+  1000 FCFA
+</button></li>
+  </ul>
+
+  <h3 style="color: red; margin-top: 20px; margin-bottom: 10px; text-decoration: underline; text-align: center; margin-left: -6mm;">PLATS D'ENTRÉES</h3>
+  <ul style="list-style-type: none; padding: 0; margin-top: 0;">
+    <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <button style="background-color: #FFD700; color: #000; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; transform: perspective(1px) translateZ(0); margin-left: -3mm;">Salade verte</button>
+      <button style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 3mm; display: flex; align-items: center;">
+  <select onchange="updateQuantity(this, 'Salade verte', 1500)" style="margin-right: 5px; padding: 2px;">
+    <option value="0" selected="">0 x</option>
+    <option value="1">1 x</option>
+    <option value="2">2 x</option>
+    <option value="3">3 x</option>
+    <option value="4">4 x</option>
+    <option value="5">5 x</option>
+    <option value="10">10 x</option>
+  </select>
+  1500 FCFA
+</button></li>
+    <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <button style="background-color: #FFD700; color: #000; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; transform: perspective(1px) translateZ(0); margin-left: -3mm;">Soupe du jour</button>
+      <button style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 3mm; display: flex; align-items: center;">
+  <select onchange="updateQuantity(this, 'Soupe du jour', 2000)" style="margin-right: 5px; padding: 2px;">
+    <option value="0" selected="">0 x</option>
+    <option value="1">1 x</option>
+    <option value="2">2 x</option>
+    <option value="3">3 x</option>
+    <option value="4">4 x</option>
+    <option value="5">5 x</option>
+  </select>
+  2000 FCFA
+</button></li>
+  </ul>
+
+  <h3 style="color: red; margin-top: 20px; margin-bottom: 10px; text-decoration: underline; text-align: center; margin-left: -4mm;">PLATS PRINCIPAUX</h3>
+  <ul style="list-style-type: none; padding: 0; margin-top: 0;">
+    <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <button style="background-color: #FFD700; color: #000; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; transform: perspective(1px) translateZ(0); margin-left: -3mm;">Poulet Yassa</button>
+      <button style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 3mm; display: flex; align-items: center;">
+  <select onchange="updateQuantity(this, 'Poulet Yassa', 3500)" style="margin-right: 5px; padding: 2px;">
+    <option value="0" selected="">0 x</option>
+    <option value="1">1 x</option>
+    <option value="2">2 x</option>
+    <option value="3">3 x</option>
+    <option value="4">4 x</option>
+    <option value="5">5 x</option>
+  </select>
+  3500 FCFA
+</button></li>
+    <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <button style="background-color: #FFD700; color: #000; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; transform: perspective(1px) translateZ(0); margin-left: -3mm;">Riz au Gras</button>
+      <button style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 3mm; display: flex; align-items: center;">
+  <select onchange="updateQuantity(this, 'Riz au Gras', 2500)" style="margin-right: 5px; padding: 2px;">
+    <option value="0" selected="">0 x</option>
+    <option value="1">1 x</option>
+    <option value="2">2 x</option>
+    <option value="3">3 x</option>
+    <option value="4">4 x</option>
+    <option value="5">5 x</option>
+  </select>
+  2500 FCFA
+</button></li>
+    <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <button style="background-color: #FFD700; color: #000; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; transform: perspective(1px) translateZ(0); margin-left: -3mm;">Attiéké poulet</button>
+      <button style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 3mm; display: flex; align-items: center;">
+  <select onchange="updateQuantity(this, 'Attièké Poisson', 3000)" style="margin-right: 5px; padding: 2px;">
+    <option value="0" selected="">0 x</option>
+    <option value="1">1 x</option>
+    <option value="2">2 x</option>
+    <option value="3">3 x</option>
+    <option value="4">4 x</option>
+    <option value="5">5 x</option>
+  </select>
+  3000 FCFA
+</button></li>
+    <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <button style="background-color: #FFD700; color: #000; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; transform: perspective(1px) translateZ(0); margin-left: -3mm;">Patte de porc</button>
+      <button style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 3mm; display: flex; align-items: center;">
+  <select onchange="updateQuantity(this, 'Patte de porc', 500)" style="margin-right: 5px; padding: 2px;">
+    <option value="0" selected="">0 x</option>
+    <option value="1">1 x</option>
+    <option value="2">2 x</option>
+    <option value="3">3 x</option>
+    <option value="4">4 x</option>
+    <option value="5">5 x</option>
+    <option value="10">10 x</option>
+    <option value="15">15 x</option>
+    <option value="20">20 x</option>
+  </select>
+  500 FCFA
+</button></li>
+  </ul>
+
+  <h3 style="color: red; margin-top: 20px; margin-bottom: 10px; text-decoration: underline; text-align: center; margin-left: -6mm;">DÉSERTS</h3>
+  <ul style="list-style-type: none; padding: 0; margin-top: 0;">
+  <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <button style="background-color: #FFD700; color: #000; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; transform: perspective(1px) translateZ(0); margin-left: -3mm; white-space: normal; overflow: visible; text-overflow: clip; width: 60%; max-width: 150px; padding-left: 10px; padding-right: 10px;">Gâteau au chocolat</button>
+    <button style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 3mm; display: flex; align-items: center;">
+  <select onchange="updateQuantity(this, 'Gâteau au chocolat', 2000)" style="margin-right: 5px; padding: 2px;">
+    <option value="0" selected="">0 x</option>
+    <option value="1">1 x</option>
+    <option value="2">2 x</option>
+    <option value="3">3 x</option>
+    <option value="4">4 x</option>
+    <option value="5">5 x</option>
+  </select>
+  2000 FCFA
+</button></li>
+  <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <button style="background-color: #FFD700; color: #000; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; transform: perspective(1px) translateZ(0); margin-left: -3mm;">Salade de fruits</button>
+    <button style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 3mm; display: flex; align-items: center;">
+  <select onchange="updateQuantity(this, 'Salade de fruits', 1500)" style="margin-right: 5px; padding: 2px;">
+    <option value="0" selected="">0 x</option>
+    <option value="1">1 x</option>
+    <option value="2">2 x</option>
+    <option value="3">3 x</option>
+    <option value="4">4 x</option>
+    <option value="5">5 x</option>
+    <option value="10">10 x</option>
+  </select>
+  1500 FCFA
+</button></li>
+</ul>
+</div>
+
+  <div class="cart-content" style="border-top: 3px double black; padding-top: 15px;">
+  <h3 style="color: #4169e1;">Votre Panier</h3>
+  <div id="cart-items" style="max-height: 300px; overflow-y: auto; margin-bottom: 15px;">
+  <div>Gâteau au chocolat : 1 x 2000 FCFA = 2000 FCFA <button onclick="removeFromCart(0)" style="background-color: #ff4500; color: white; border: none; padding: 2px 5px; border-radius: 3px; cursor: pointer; margin-left: 5px;">Retirer</button></div>
+</div>
+  <div id="cart-total" style="font-weight: bold; font-size: 1.2em; color: #4169e1;">Total: 2000 FCFA</div>
+  <button onclick="clearCart()" style="background-color: #ff4500; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin-top: 10px;">Vider mon panier</button>
+</div>
+</div>
+</div>
+<div>
+    <button class="action-button" style="background-color: white; color: black; padding: 10px; height: auto; white-space: normal; line-height: 1.2;">
+  <h2 style="font-size: 0.9em; margin: 0; word-wrap: break-word; text-transform: uppercase;">APRÈS AVOIR REMPLI VOTRE PANIER, SÉLECTIONNEZ LE SERVICE DE VOTRE CHOIX 🟦 ou 🟩</h2>
+</button>
+    <button class="action-button" onclick="toggleDineInOptions()" style="margin-top: 10px; transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.2); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); position: relative; overflow: hidden; background: linear-gradient(45deg, #0000FF, #4169E1);">
+    <span style="position: relative; z-index: 2; text-transform: uppercase; font-weight: bold; color: #FFF; mix-blend-mode: normal;">MANGER SUR PLACE</span>
+    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent); transform: rotate(45deg); animation: shine 3s infinite;">
+        <style>
+            @keyframes shine {
+                0% { transform: translateX(-100%) rotate(45deg); }
+                100% { transform: translateX(100%) rotate(45deg); }
+            }
+        </style>
+    </div>
+</button>
+    <div id="dineInOptions" class="dine-in-options" style="display: none; background-color: #c8e6ff;">
+    <select id="tableSelect">
+        <option value="">Sélectionnez une table</option>
+        <option value="1">Table 1</option>
+        <option value="2">Table 2</option>
+        <option value="3">Table 3</option>
+        <option value="4">Table 4</option>
+        <option value="5">Table 5</option>
+        <option value="6">Table 6</option>
+        <option value="7">Table 7</option>
+        <option value="8">Table 8</option>
+        <option value="9">Table 9</option>
+        <option value="10">Table 10</option>
+        <option value="11">Table 11</option>
+        <option value="12">Table 12</option>
+        <option value="13">Table 13</option>
+        <option value="14">Table 14</option>
+        <option value="15">Table 15</option>
+        <option value="16">Table 16</option>
+        <option value="17">Table 17</option>
+        <option value="18">Table 18</option>
+        <option value="19">Table 19</option>
+        <option value="20">Table 20</option>
+    </select>
+    <select id="serverSelect">
+        <option value="">Choisir un serveur (facultatif)</option>
+        <option value="1">Ali</option>
+        <option value="2">Fred</option>
+        <option value="3">Guy</option>
+    </select>
+    <button onclick="sendDineInOrderWhatsApp()" class="action-button" style="margin-top: 10px;">Transmettre la commande par WhatsApp</button>
+</div>
+    <button class="action-button" onclick="toggleDeliveryOptions()" style="margin-top: 10px; transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.2); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); position: relative; overflow: hidden; background-color: #4CAF50;">
+    <span style="position: relative; z-index: 2; text-transform: uppercase; font-weight: bold;">LIVRAISON À DOMICILE</span>
+    <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shine 2s infinite;"></div>
+</button>
+    <div id="deliveryOptions" class="delivery-options" style="display: none; background-color: #e8f5e9; border: 1px solid #4CAF50; border-radius: 8px; padding: 15px; margin-top: 10px;">
+    <input type="text" id="deliveryAddress" placeholder="Copier et collez ici votre localisation GPS (qui est disponible sur votre whatssapp)" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #4CAF50; margin-left: -3mm;">
+    <input type="text" id="deliveryAddress2" placeholder="(FACULTATIFS) Dosages ingrédients, allergies, etc" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #4CAF50; margin-left: -3mm;">
+    <select id="deliveryTime" style="display: none;">
+</select>
+    <button onclick="sendDeliveryOrderWhatsApp()" class="action-button" style="margin-top: 10px; background-color: #4CAF50;">Transmettre la commande par WhatsApp</button></div></div></div>
+    <div>
+    <button onclick="sendWhatsAppMessage()" style="color: black; text-decoration: none; display: flex; align-items: center; justify-content: center; background-color: #FFD700; padding: 10px 15px; border-radius: 5px; margin: 10px auto; max-width: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; position: relative; z-index: 10; margin-top: -2.5mm; margin-left: 5%; margin-right: 5%; width: 90%; cursor: pointer; border: none;">
+    <span style="font-weight: bold; font-size: 16px;">PAYER MA FACTURE<br>PAR MOBILE MONEY &amp; CARTE VISA<br>(Après avoir reçu ma commande)</span>
+</button>
+    <div>
+    <div style="display: flex; justify-content: space-between; margin: 10px auto; width: 90%;">
+        <button onclick="reserveTable()" style="color: white; text-decoration: none; display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #00CED1, #4169E1, #9400D3); padding: 10px 15px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s ease; position: relative; z-index: 10; cursor: pointer; border: none; width: 48%; margin-top: 0mm;">
+    <span style="font-weight: bold; font-size: 16px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">RÉSERVATION DE TABLE</span>
+</button>
+        <button onclick="sendFeedbackWhatsApp()" style="color: white; text-decoration: none; display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #00CED1, #4169E1, #9400D3); padding: 10px 15px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s ease; position: relative; z-index: 10; cursor: pointer; border: none; width: 48%; margin-top: 0mm;">
+    <span style="font-weight: bold; font-size: 16px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">DONNER VOTRE AVIS SUR LA QUALITÉ DE NOS SERVICES</span>
+</button>
+    </div>
+</div>
+    <a href="https://websim.ai/c/AivMekvcTwxdvl9QE" target="_blank" style="color: white; text-decoration: none; display: flex; align-items: center; justify-content: center; background-color: #FFD700; padding: 10px 15px; border-radius: 5px; margin: 10px auto; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; position: relative; z-index: 10; margin-top: 20px; width: calc(90% - 8mm); cursor: pointer; margin-left: auto; margin-right: auto; text-align: center;">
+    <span style="font-weight: bold; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;">CARTE DE FIDÉLITÉ ET DE PARRAINAGE</span>
+</a>
+    <p></p>
+    <p></p>
+    <button onclick="requestCustomService()" style="color: black; text-decoration: none; display: flex; align-items: center; justify-content: center; background-color: #FFD700; padding: 10px 15px; border-radius: 5px; margin: 10px auto; max-width: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; position: relative; z-index: 10; margin-top: 10px; margin-left: 5%; margin-right: 5%; width: 90%; cursor: pointer; border: none; animation: blink 1s infinite;">
+    <span style="position: relative; z-index: 2; font-weight: bold; font-size: 16px;">DEMANDER UN SERVICE QUI NE FIGURE PAS SUR LE MENU</span>
+    <style>
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</button>
+</div>
+    <div>
+    <button onclick="window.open('https://www.facebook.com/CLUBABCD1', '_blank')" style="color: white; text-decoration: none; display: flex; align-items: center; justify-content: center; background-color: #1877F2; padding: 10px 15px; border-radius: 5px; margin: 10px auto; max-width: 301mm; width: 90%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; position: relative; z-index: 10; margin-left: 5%; margin-right: 5%; margin-top: 18mm; border: none; cursor: pointer;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" style="margin-right: 10px;">
+        <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+    </svg>
+    <span style="font-weight: bold; font-size: 16px;">Suivez-nous sur Facebook</span>
+</button>
+</div>
+
+<script>
+let cartItems = [{"name":"Gâteau au chocolat","price":2000,"quantity":1}];
+let cartTotal = 2000;
+
+function addToCart(itemName, itemPrice) {
+    const existingItemIndex = cartItems.findIndex(item => item.name === itemName);
+    if (existingItemIndex !== -1) {
+        cartItems[existingItemIndex].quantity += 1;
+        cartItems[existingItemIndex].price += itemPrice;
+    } else {
+        cartItems.push({name: itemName, price: itemPrice, quantity: 1});
+    }
+    cartTotal += itemPrice;
+    updateCartDisplay();
+}
+
+function updateCartDisplay() {
+    const cartItemsElement = document.getElementById('cart-items');
+    const cartTotalElement = document.getElementById('cart-total');
+    
+    cartItemsElement.innerHTML = '';
+    cartItems.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.innerHTML = `${item.name} : ${item.quantity} x ${item.price / item.quantity} FCFA = ${item.price} FCFA 
+            <button onclick="removeFromCart(${index})" style="background-color: #ff4500; color: white; border: none; padding: 2px 5px; border-radius: 3px; cursor: pointer; margin-left: 5px;">Retirer</button>`;
+        cartItemsElement.appendChild(itemElement);
+    });
+    
+    cartTotalElement.textContent = `Total: ${cartTotal} FCFA`;
+    document.getElementById('delivery-total').textContent = cartTotal;
+}
+
+function removeFromCart(index) {
+    const removedItem = cartItems.splice(index, 1)[0];
+    cartTotal -= removedItem.price;
+    updateCartDisplay();
+}
+
+function clearCart() {
+    cartItems = [];
+    cartTotal = 0;
+    updateCartDisplay();
+}
+
+function toggleDineInOptions() {
+    const dineInOptions = document.getElementById('dineInOptions');
+    dineInOptions.style.display = dineInOptions.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleDeliveryOptions() {
+    const deliveryOptions = document.getElementById('deliveryOptions');
+    deliveryOptions.style.display = deliveryOptions.style.display === 'none' ? 'block' : 'none';
+}
+
+function sendDineInOrderWhatsApp() {
+    const phoneNumber = "+22656888879";
+    const tableNumber = document.getElementById('tableSelect').value;
+    const serverName = document.getElementById('serverSelect').value;
+    
+    let message = `Commande sur place - Table ${tableNumber}\n`;
+    if (serverName) {
+        message += `Serveur: ${serverName}\n`;
+    }
+    message += "\nCommande:\n";
+    
+    cartItems.forEach(item => {
+        message += `- ${item.name} : ${item.quantity} x ${item.price / item.quantity} FCFA = ${item.price} FCFA\n`;
+    });
+    
+    message += `\nTotal : ${cartTotal} FCFA`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+}
+
+function sendDeliveryOrderWhatsApp() {
+    const phoneNumber = "+22656888879";
+    const address = document.getElementById('deliveryAddress').value;
+    const additionalInfo = document.getElementById('deliveryAddress2').value;
+    
+    let message = "Commande pour livraison\n\n";
+    message += `Adresse de livraison: ${address}\n`;
+    if (additionalInfo) {
+        message += `Informations supplémentaires: ${additionalInfo}\n`;
+    }
+    message += "\nCommande:\n";
+    
+    cartItems.forEach(item => {
+        message += `- ${item.name} : ${item.quantity} x ${item.price / item.quantity} FCFA = ${item.price} FCFA\n`;
+    });
+    
+    message += `\nTotal : ${cartTotal} FCFA`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+}
+
+function sendWhatsAppMessage() {
+    const phoneNumber = "+22656888879";
+    let message = "Bonjour, je souhaite payer ma facture. Voici les détails de ma commande :\n\n";
+
+    cartItems.forEach(item => {
+        message += `- ${item.name} : ${item.quantity} x ${item.price / item.quantity} FCFA = ${item.price} FCFA\n`;
+    });
+
+    message += `\nTotal à payer : ${cartTotal} FCFA\n\nPouvez-vous me confirmer les modalités de paiement ?`;
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+}
+
+function sendFeedbackWhatsApp() {
+    const phoneNumber = "+22656888879";
+    let message = "RESTAURANT LOUANGE, je souhaiterais laisser un avis sur l'expérience que j'ai eu sur la qualité de vos services.";
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+}
+
+function reserveTable() {
+    const phoneNumber = "+22656888879";
+    let message = "Bonjour, je souhaiterais réserver une table.\n\n";
+    message += "Date souhaitée : [INDIQUEZ LA DATE]\n";
+    message += "Heure : [INDIQUEZ L'HEURE]\n";
+    message += "Nombre de personnes : [INDIQUEZ LE NOMBRE]\n\n";
+    message += "Pourriez-vous me confirmer la disponibilité ? Merci !";
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+}
+
+function updateQuantity(selectElement, itemName, itemPrice) {
+    const quantity = parseInt(selectElement.value);
+    const existingItemIndex = cartItems.findIndex(item => item.name === itemName);
+
+    if (existingItemIndex !== -1) {
+        // Si l'article existe déjà, mettez à jour sa quantité
+        const oldQuantity = cartItems[existingItemIndex].quantity;
+        cartItems[existingItemIndex].quantity = quantity;
+        cartItems[existingItemIndex].price = itemPrice * quantity;
+        cartTotal += (quantity - oldQuantity) * itemPrice;
+    } else if (quantity > 0) {
+        // Si l'article n'existe pas encore et la quantité est supérieure à 0, ajoutez-le au panier
+        cartItems.push({name: itemName, price: itemPrice * quantity, quantity: quantity});
+        cartTotal += itemPrice * quantity;
+    }
+
+    updateCartDisplay();
+}
+
+function openInfoModal(itemName) {
+    let info = '';
+    let imageUrl = '';
+    switch(itemName) {
+        case 'Eau minérale':
+            info = "Eau naturelle mise en bouteille au Burkina Faso. Marque LAFI. RIche en magnésium et en calcium.";
+            imageUrl = "https://disco.discowd.com/r/yr53.jpg.jpg";
+            break;
+        // Ajoutez d'autres cas pour les autres éléments du menu si nécessaire
+    }
+    
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.left = '0';
+    modal.style.top = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
+    modal.style.zIndex = '1000';
+
+    const content = document.createElement('div');
+    content.style.backgroundColor = 'white';
+    content.style.padding = '20px';
+    content.style.borderRadius = '10px';
+    content.style.maxWidth = '80%';
+    content.style.maxHeight = '80%';
+    content.style.overflow = 'auto';
+    content.style.position = 'relative';
+
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'X';
+    closeButton.style.position = 'absolute';
+    closeButton.style.right = '10px';
+    closeButton.style.top = '10px';
+    closeButton.style.border = 'none';
+    closeButton.style.background = 'none';
+    closeButton.style.fontSize = '20px';
+    closeButton.style.cursor = 'pointer';
+    closeButton.onclick = () => document.body.removeChild(modal);
+
+    const title = document.createElement('h2');
+    title.textContent = itemName;
+
+    const description = document.createElement('p');
+    description.textContent = info;
+
+    const image = document.createElement('img');
+    image.src = imageUrl;
+    image.alt = itemName;
+    image.style.maxWidth = '100%';
+    image.style.height = 'auto';
+    image.style.marginTop = '10px';
+
+    content.appendChild(closeButton);
+    content.appendChild(title);
+    content.appendChild(description);
+    content.appendChild(image);
+    modal.appendChild(content);
+
+    document.body.appendChild(modal);
+}
+</script></body></html>
